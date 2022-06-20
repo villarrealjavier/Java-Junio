@@ -4,22 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Catalogo {
-	private List<Producto> lista;
+	private List<Producto> listaCatalogo;
 	public Catalogo() {
-		lista = new ArrayList<Producto>();
+		listaCatalogo = new ArrayList<Producto>();
 	}
 	
 	public String mostrarProductos() {
-		return lista.toString();
+		return listaCatalogo.toString();
 	}
 	
 	public String mostrarProductosActivos() {
-		List<String> lista2 = new ArrayList<>();
-		for (Producto p: lista) {
+		StringBuilder sb = new StringBuilder();
+
+		for (Producto p: listaCatalogo) {
 			if(p.getFechaBaja()==null) {
-				lista2.add(p.getNombre());
+				sb.append("Nombre del producto: "+ p.getNombre()+"\n");
+			
 			}
 		}
-		return lista2.toString();
+		return sb.toString();
 	}
 }

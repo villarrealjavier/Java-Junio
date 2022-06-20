@@ -15,6 +15,7 @@ public class Pedido {
 	private List<Linea> listaLineas;
 	
 	public Pedido() {
+		this.id=secuencia++;
 		this.listaLineas= new ArrayList<>();
 		cliente = new Cliente();
 	}
@@ -62,7 +63,7 @@ public class Pedido {
 
 	}
 	
-	public String mostrarLineasPorIDAscendente() {
+	public List<Linea> mostrarLineasPorIDAscendente() {
 		listaLineas.sort(new Comparator<Linea>() {
 
 			@Override
@@ -73,9 +74,9 @@ public class Pedido {
 			
 		}
 		);
-		return listaLineas.toString();
+		return listaLineas;
 	}
-	public String mostrarLineasPorPrecioDescendente() {
+	public List<Linea> mostrarLineasPorPrecioDescendente() {
 		listaLineas.sort(new Comparator<Linea>(){
 
 			@Override
@@ -85,7 +86,7 @@ public class Pedido {
 			}
 			
 		});
-		return listaLineas.toString();
+		return listaLineas;
 		
 	}
 	
@@ -98,14 +99,15 @@ public class Pedido {
 		return resultado;
 		
 	}
-	
+	//NO ES NECESARIO YA QUE SE PUEDE SACAR EL PRODUCTO SIN HACER ESTO
+	/*
 	public String obtenerProductos() {
 		Producto p1= new Producto();
 		for (Linea l: listaLineas) {
 			p1=l.getProducto();
 		}
 		return p1.toString();
-	}
+	}*/
 	
 	
 	

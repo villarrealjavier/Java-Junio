@@ -21,7 +21,7 @@ public class MainApp {
 		Cliente c3 = new Cliente("Mario", "COnde", "mariomario@gmail.com",LocalDate.of(2003, 11, 11), Genero.HOMBRE);
 
 		Pedido p1 = new Pedido("AAA", Status.PROCESADO, c1);
-		Pedido p2 = new Pedido("CCC", Status.PROCESADO, c2);
+		Pedido p2 = new Pedido("CCC", Status.PROCESADO, c1);
 		Pedido p3 = new Pedido("XXX", Status.PROCESADO, c3);
 
 		Producto pr1 = new Producto("Macarrones", 12.00);
@@ -64,8 +64,9 @@ public class MainApp {
 		//System.out.println(n1.obtenerMapaMediaPorPedido());
 		//System.out.println(n1.obtenerPedidoConUnitarioMedioMasAlto());
 		//System.out.println(n1.obtenerPedidoConUnitarioMedioMasBajo());
-		System.out.println(n1.obtenerMapaClienteVip());
-		System.out.println(n1.obtenerClienteVip());
+		//System.out.println(n1.obtenerMapaClienteVip());
+		//System.out.println(n1.obtenerClienteVip());
+		System.out.println(n1.mostrarProductosPorCliente());
 	}
 
 }

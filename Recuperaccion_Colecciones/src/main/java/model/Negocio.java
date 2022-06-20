@@ -128,7 +128,12 @@ public class Negocio {
 				
 			});
 			for(Pedido p: listaPedidos) {
-				mapaVip.put(p.getCliente(), p.getCostePedido());
+				if (mapaVip.keySet().contains(p.getCliente())) {
+					mapaVip.put(p.getCliente(), p.getCostePedido()+ mapaVip.get(p.getCliente()));
+				}else {
+					mapaVip.put(p.getCliente(), p.getCostePedido());
+					
+				}
 			}
 			
 			return mapaVip;
@@ -165,7 +170,12 @@ public class Negocio {
 			
 			for (Pedido p: listaPedidos) {
 				for (Linea l: p.getListaLineas()) {
-					mapaProductoVip.put(l.getProducto(), l.getCantidad());
+					if (mapaProductoVip.keySet().contains(l.getProducto())) {
+						mapaProductoVip.put(l.getProducto(), l.getCantidad()+mapaProductoVip.get(l.getProducto()));
+					}else {
+						mapaProductoVip.put(l.getProducto(), l.getCantidad());
+						
+					}
 				}
 			}
 			
@@ -266,10 +276,16 @@ public class Negocio {
 	public Map<Cliente,Set<Producto>> mostrarProductosPorCliente() {
 		Map<Cliente,Set<Producto>> productosPorCliente = new HashMap<>();
 		for (Pedido p : listaPedidos) {
-			productosPorCliente.put(p.getCliente(), new HashSet<Producto>());
 			for (Linea l: p.getListaLineas()) {
-				productosPorCliente.get(p.getCliente()).add(l.getProducto());
+				if (!productosPorCliente.containsKey(p.getCliente())) {
+					productosPorCliente.put(p.getCliente(), new HashSet<>());
+					productosPorCliente.get(p.getCliente()).add(l.getProducto());
+				}else {
+					productosPorCliente.get(p.getCliente()).add(l.getProducto());
+					
+				}
 			}
+			
 			
 			
 		}

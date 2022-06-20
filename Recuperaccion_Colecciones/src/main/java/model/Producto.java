@@ -1,6 +1,7 @@
 package main.java.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Producto {
 	private LocalDate fechaAlta;
@@ -11,7 +12,7 @@ public class Producto {
 	private Double precioUnitario;
 	
 	public Producto() {
-		
+		this.fechaAlta=LocalDate.now();
 	}
 	
 	public Producto(String nombre, Double precioUnitario) {
@@ -66,12 +67,8 @@ public class Producto {
 		this.precioUnitario = precioUnitario;
 	}
 	public boolean isActivo() {
-		boolean resultado=false;
-		if (this.fechaBaja==null) {
-			resultado=true;
-		}
-		
-		return resultado;
+
+		return this.fechaBaja==null;
 	}
 
 	@Override
