@@ -50,7 +50,7 @@ public class Linea {
 		return resultado;
 	}
 	
-	public boolean VaciarLinea() {
+	public boolean vaciarLinea() {
 		boolean resultado=false;
 		this.producto=null;
 		this.cantidad=null;

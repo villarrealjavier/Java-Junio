@@ -1,22 +1,22 @@
 package main.java.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Catalogo {
-	private List<Producto> listaCatalogo;
+	private Set<Producto> conjuntoProductos;
 	public Catalogo() {
-		listaCatalogo = new ArrayList<Producto>();
+		conjuntoProductos = new HashSet<Producto>();
 	}
 	
 	public String mostrarProductos() {
-		return listaCatalogo.toString();
+		return conjuntoProductos.toString();
 	}
 	
 	public String mostrarProductosActivos() {
 		StringBuilder sb = new StringBuilder();
 
-		for (Producto p: listaCatalogo) {
+		for (Producto p: conjuntoProductos) {
 			if(p.getFechaBaja()==null) {
 				sb.append("Nombre del producto: "+ p.getNombre()+"\n");
 			

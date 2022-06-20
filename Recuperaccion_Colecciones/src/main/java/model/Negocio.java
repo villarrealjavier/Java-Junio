@@ -27,7 +27,7 @@ public class Negocio {
 	public boolean addCliente(Cliente c1) {
 		boolean resultado=false;
 
-		if (!lista.contains(c1) && LocalDate.now().getYear()-c1.getFechaNacimiento().getYear()>=18) {
+		if (c1.esMayorEdad()) {
 				resultado=true;
 				lista.add(c1);
 		}
@@ -37,12 +37,14 @@ public class Negocio {
 	}
 	public boolean eliminarCliente(String dni) {
 		boolean resultado=false;
+		Cliente c1=null;
 		for (Cliente c:lista) {
 			if (c.getDni().equals(dni)) {
-				lista.remove(c);
+				c1=c;
 				resultado=true;
 			}
 		}
+		lista.remove(c1);
 		
 		return resultado;
 	}
@@ -241,6 +243,20 @@ public class Negocio {
 			
 			for (Pedido p: mapaCantidad.keySet()) {
 				if(mapaCantidad.get(p)>mayorUnitario) {
+					mayorUnitario=mapaCantidad.get(p);
+					p1=p;
+				}
+			}
+			
+			return p1;
+		}
+		public Pedido obtenerPedidoConUnitarioMasBarato() {
+			Map<Pedido,Double> mapaCantidad = obtenerMapaConPreciosUnitarios();
+			Double mayorUnitario=999999.0;
+			Pedido p1= new Pedido();
+			
+			for (Pedido p: mapaCantidad.keySet()) {
+				if(mapaCantidad.get(p)<mayorUnitario) {
 					mayorUnitario=mapaCantidad.get(p);
 					p1=p;
 				}

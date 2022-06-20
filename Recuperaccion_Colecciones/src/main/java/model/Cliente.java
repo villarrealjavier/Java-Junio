@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
+	private static final int MAYOR_EDAD = 18;
 	private Integer id;
 	private String nombre;
 	private String apellidos;
@@ -27,6 +28,11 @@ public class Cliente {
 		
 		
 	}
+	public boolean esMayorEdad() {
+		
+		return LocalDate.now().getYear()-this.getFechaNacimiento().getYear()>=MAYOR_EDAD;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

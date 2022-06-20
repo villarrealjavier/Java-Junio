@@ -20,11 +20,11 @@ public class Pedido {
 		cliente = new Cliente();
 	}
 	public Pedido(String codigo,Status status ,Cliente cliente ) {
-		this.id=secuencia++;
+		this();
 		this.codigo=codigo;
 		this.status=status;
 		this.cliente=cliente;
-		this.listaLineas= new ArrayList<>();
+		
 	}
 	
 	public void addLinea(Linea linea) {
